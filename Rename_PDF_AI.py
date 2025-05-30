@@ -1,5 +1,6 @@
 import os
 import tkinter as tk
+from dotenv import load_dotenv
 from tkinter import filedialog, messagebox, ttk
 from threading import Thread
 from pdfminer.high_level import extract_text
@@ -8,10 +9,10 @@ from langchain.prompts import ChatPromptTemplate
 from pdf2image import convert_from_path
 import pytesseract
 
+load_dotenv()
 
-api_key = 'chave da API' #https://console.groq.com/keys
-os.environ['GROQ_API_KEY'] = api_key
-chat = ChatGroq(model='')
+api_key = os.getenv('GROQ_API_KEY')
+chat = ChatGroq(model='llama-3.3-70b-versatile')
 
 
 parar_execucao = False
